@@ -6,8 +6,9 @@ const useChannel = (channelTopic, reducer, initialState) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [channel, _] = useState(socket.channel(channelTopic));
 
-  //callback
-  const fetchMessages = () => {
+  //useEffect
+  useEffect(() => {
+    // load initial data
     fetch("/messages")
       .then((response) => response.json())
       .then((data) => {
@@ -16,12 +17,6 @@ const useChannel = (channelTopic, reducer, initialState) => {
           payload: data,
         });
       });
-  };
-
-  //useEffect
-  useEffect(() => {
-    // load initial data
-    fetchMessages();
   }, []);
 
   useEffect(() => {
