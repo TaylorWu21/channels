@@ -16,6 +16,8 @@ defmodule ChannelsWeb.Router do
   scope "/", ChannelsWeb do
     pipe_through(:browser)
 
+    get("/messages", PageController, :messages)
+
     # React endpoint is a catchall - needs to be at the bottom
     get("/*path", PageController, :index)
   end

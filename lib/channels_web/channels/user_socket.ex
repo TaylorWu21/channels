@@ -16,9 +16,9 @@ defmodule ChannelsWeb.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
-  def connect(%{"username" => username}, socket, info) do
+  def connect(%{"username" => username}, socket, _info) do
     if String.length(username) > 0 do
-      {:ok, socket}
+      {:ok, assign(socket, :username, username)}
     else
       :error
     end
