@@ -51,7 +51,7 @@ const MessagingApp = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        height: "95vh",
+        height: "90vh",
       }}
     >
       {/* Login */}

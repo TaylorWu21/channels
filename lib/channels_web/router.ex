@@ -17,6 +17,7 @@ defmodule ChannelsWeb.Router do
     pipe_through(:browser)
 
     get("/messages", PageController, :messages)
+    get("/last_messages/:id", PageController, :last_messages)
 
     # React endpoint is a catchall - needs to be at the bottom
     get("/*path", PageController, :index)

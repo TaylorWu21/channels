@@ -37,7 +37,16 @@ const useChannel = (channelTopic, reducer, initialState) => {
       channel
         .join()
         .receive("ok", (resp) => {
-          fetchMessages();
+          if (state.lastMessageId) {
+            fetch(`/last_messages/${state.lastMessageId}`)
+              .then((response) => response.json())
+              .then((data) => {
+                dispatch({
+                  event: "load_latest_messages",
+                  payload: data,
+                });
+              });
+          }
 
           console.log("successfully joined channel", resp.messages || "");
         })
